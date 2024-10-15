@@ -1,0 +1,117 @@
+WebForm1.aspx:
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="pb2.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Calendar ID="Calendar1" runat="server" OnDayRender="Calendar1_DayRender"
+                OnSelectionChanged="Calendar1_SelectionChanged" Height="211px" Width="299px"></asp:Calendar>
+            <asp:Label ID="Label1" runat="server"></asp:Label>
+            <br />
+            <asp:Label ID="Label2" runat="server"></asp:Label>
+            <br />
+            <asp:Label ID="Label3" runat="server"></asp:Label>
+            <br />
+            <asp:Label ID="Label4" runat="server"></asp:Label>
+            <br />
+            <asp:Label ID="Label5" runat="server"></asp:Label>
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" />
+            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Reset" />
+            <br />
+        </div>
+    </form>
+</body>
+</html>
+
+
+WebForm1.aspx.cs:
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace pb2
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
+        {
+            {
+                if (e.Day.Date.Day == 5 && e.Day.Date.Month == 9)
+                {
+                    e.Cell.BackColor = System.Drawing.Color.Yellow;
+                    Label lbl = new Label();
+                    lbl.Text = "<br>Teachers Day!";
+                    e.Cell.Controls.Add(lbl);
+                    Image g1 = new Image();
+                    g1.ImageUrl = "tg.jpg";
+                    g1.Height = 20;
+                    g1.Width = 20;
+                    e.Cell.Controls.Add(g1);
+                }
+
+                {
+                    Calendar1.SelectedDate = new DateTime(2022, 10, 23);
+                    Calendar1.SelectedDates.SelectRange(Calendar1.SelectedDate,
+                    Calendar1.SelectedDate.AddDays(5));
+                    Label lbl1 = new Label();
+                    lbl1.Text = "<br>Diwali";
+                    e.Cell.Controls.Add(lbl1);
+                }
+
+            }
+        }
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            {
+                Label1.Text = "Your Selected Date:" + Calendar1.SelectedDate.Date.ToString();
+            }
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            {
+                Calendar1.Caption = "Calendar";
+                Calendar1.FirstDayOfWeek = FirstDayOfWeek.Sunday;
+                Calendar1.NextPrevFormat = NextPrevFormat.FullMonth;
+                Calendar1.TitleFormat = TitleFormat.Month;
+                Label2.Text = "Todays Date" + Calendar1.SelectedDate.ToShortDateString();
+                Label3.Text = "Diwali Vacation Start: 10-23-2022";
+                TimeSpan d = new DateTime(2022, 10, 23) - Calendar1.SelectedDate;
+                Label4.Text = "Days Remaining For Diwali Vacation:" + d.Days.ToString();
+                TimeSpan d1 = new DateTime(2022, 12, 31) - Calendar1.SelectedDate;
+                Label5.Text = "Days Remaining for New Year:" + d1.Days.ToString();
+                if (Calendar1.SelectedDate.ToShortDateString() == "10-23-2022")
+                    Label3.Text = "<b>Diwali Festival Start</b>";
+                if (Calendar1.SelectedDate.ToShortDateString() == "10-28-2022")
+                    Label3.Text = "<b>Diwali Festival End</b>";
+            }
+        }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            {
+                Label1.Text = "";
+                Label2.Text = "";
+                Label3.Text = "";
+                Label4.Text = "";
+                Label5.Text = "";
+                Calendar1.SelectedDates.Clear();
+            }
+        }
+    }
+}

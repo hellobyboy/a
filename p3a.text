@@ -1,0 +1,120 @@
+WebForm1.aspx:
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="pp3a.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            name :
+            <asp:TextBox ID="TextBox1" runat="server" AutoPostBack="True" OnTextChanged="TextBox1_TextChanged" Width="178px"></asp:TextBox>
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <br />
+            course Name : <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label><br />
+                <asp:DropDownList ID="DropDownList1" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" runat="server" Height="32px" Width="78px" AutoPostBack="true">
+                <asp:ListItem>BCA</asp:ListItem>
+                <asp:ListItem>BSc</asp:ListItem>
+            </asp:DropDownList>
+            <br />
+            <br />
+            select Language :<asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+            <br />
+            <asp:CheckBoxList ID="CheckBoxList1" OnSelectedIndexChanged="CheckBoxList1_SelectedIndexChanged" runat="server" Height="16px" Width="81px" AutoPostBack="True">
+                <asp:ListItem>IOT</asp:ListItem>
+                <asp:ListItem>C++</asp:ListItem>
+                <asp:ListItem>python</asp:ListItem>
+                <asp:ListItem>Java</asp:ListItem>
+            </asp:CheckBoxList>
+            <br />
+            Subject :<asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+            <br />
+            <asp:ListBox ID="ListBox1" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" runat="server" Height="56px" Width="67px" AutoPostBack="True">
+                <asp:ListItem>Java</asp:ListItem>
+                <asp:ListItem>IOT</asp:ListItem>
+                <asp:ListItem>AWP</asp:ListItem>
+            </asp:ListBox>
+            <br />
+            Select gender :<asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+            <br />
+                <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="True" runat="server">
+                <asp:ListItem>Male</asp:ListItem>
+                <asp:ListItem>Female</asp:ListItem>
+            </asp:RadioButtonList>
+            <br />
+&nbsp;<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="SUBMIT" />
+            <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
+            <br />
+    </form>
+</body>
+</html>
+
+
+
+WebForm1.aspx.cs
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace pp3a
+{
+    
+ public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            String str;
+            str = TextBox1.Text;
+            Label1.Text = str;
+        }
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Label2.Text = DropDownList1.SelectedValue;
+        }
+        protected void CheckBoxList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Label4.Text = "";
+            foreach (ListItem x in CheckBoxList1.Items)
+            {
+                if (x.Selected)
+                {
+                    Label4.Text += "<br>" + x.Value;
+                }
+            }
+        }
+        protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Label5.Text = RadioButtonList2.SelectedValue;
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Label6.Text = "Record submitted";
+        }
+        protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Label3.Text = "";
+            foreach (ListItem x in ListBox1.Items)
+            {
+                if (x.Selected)
+                {
+                    Label3.Text += x.Value;
+                }
+            }
+        }
+    }
+
+}
