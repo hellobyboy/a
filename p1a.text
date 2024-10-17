@@ -1,34 +1,21 @@
 using System;
 
-// This is the beginning of the Exercise7 class
-public class Exercise7
+class Program
 {
-    // This is the main method where the program execution starts
-    public static void Main()
+    static void Main()
     {
-        // Prompting the user to enter the first number
-        Console.Write("Enter a number: ");
-        // Reading the first number entered by the user and converting it to an integer
-        int num1 = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter the first number: ");
+        double num1 = double.Parse(Console.ReadLine());
 
-        // Prompting the user to enter the second number
-        Console.Write("Enter another number: ");
-        // Reading the second number entered by the user and converting it to an integer
-        int num2 = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter the second number: ");
+        double num2 = double.Parse(Console.ReadLine());
 
-        // Displaying addition of the two numbers
-        Console.WriteLine("{0} + {1} = {2}", num1, num2, num1 + num2);
+        Console.WriteLine($"Addition: {num1} + {num2} = {num1 + num2}");
+        Console.WriteLine($"Subtraction: {num1} - {num2} = {num1 - num2}");
+        Console.WriteLine($"Multiplication: {num1} * {num2} = {num1 * num2}");
+        Console.WriteLine(num2 != 0 ? $"Division: {num1} / {num2} = {num1 / num2}" : "Division: Cannot divide by zero");
 
-        // Displaying subtraction of the two numbers
-        Console.WriteLine("{0} - {1} = {2}", num1, num2, num1 - num2);
-
-        // Displaying multiplication of the two numbers
-        Console.WriteLine("{0} x {1} = {2}", num1, num2, num1 * num2);
-
-        // Displaying division of the two numbers
-        Console.WriteLine("{0} / {1} = {2}", num1, num2, num1 / num2);
-
-        // Displaying modulus (remainder) of the two numbers
-        Console.WriteLine("{0} mod {1} = {2}", num1, num2, num1 % num2);
+        Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
     }
 }

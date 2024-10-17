@@ -6,7 +6,7 @@ class Program
 static void Main(string[] args)
 {
 int num, counter;
-Console.Write("Enter number:");
+Console.Write("Enter number to test if it is prime:");
 num = int.Parse(Console.ReadLine());
 for (counter = 2; counter <= num / 2; counter++)
 { 

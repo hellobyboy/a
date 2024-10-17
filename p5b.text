@@ -1,0 +1,186 @@
+WebForm1.aspx:
+<%@ Page Language="C#" Theme="Theme1" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs"
+Inherits="ThemesAndSkins.WebForm1" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+ <title></title>
+</head>
+<body>
+ <form id="form1" runat="server">
+ <div>
+ <h1>Welcome To Rizvi</h1>
+ <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+ </div>
+ </form>
+</body>
+</html>
+Design View:
+How to add Theme2:
+1)Right click on project name(ThemesAndSkins).
+2)Click on Add ->Click on ASP.Net Folder -> Click on Theme
+3)Give a name to the folder(Theme2).
+4)Now you can add skin file as well as stylesheet by giving right click on the folder name.
+Skin1.skin:
+<asp:TextBox runat="server" BackColor="#CC0066" BorderStyle="Dashed" BorderWidth="7px"
+ForeColor="#CCFF66"></asp:TextBox>
+StyleSheet1.css:
+body {
+ background-color:red
+}
+h1 { background-color:yellow }
+Web.config:
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ For more information on how to configure your ASP.NET application, please visit
+ https://go.microsoft.com/fwlink/?LinkId=169433
+ -->
+<configuration>
+ <system.web>
+ <compilation debug="true" targetFramework="4.7" />
+ <httpRuntime targetFramework="4.7" />
+ <pages theme="Theme2"></pages>
+ </system.web>
+ <system.codedom>
+ <compilers>
+ <compiler language="c#;cs;csharp" extension=".cs"
+type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider,
+Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral,
+PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default
+/nowarn:1659;1699;1701" />
+ <compiler language="vb;vbs;visualbasic;vbscript" extension=".vb"
+type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.VBCodeProvider,
+Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral,
+PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:41008
+/define:_MYTYPE=\&quot;Web\&quot; /optionInfer+" />
+ </compilers>
+ </system.codedom>
+</configuration>
+
+
+MasterPage: 
+Site1.Master:
+<!DOCTYPE html>
+
+<html>
+<head>
+ <title>my layout</title>
+ <link rel="stylesheet" type="text/css" href="css/StyleSheet1.css"> 
+</head>
+<body>
+<header id="header">
+<h1>Learn Programming </h1>
+</header>
+<nav id="nav">
+ <ul>
+ <li><a href="home.aspx">Home</a></li>
+ <li><a href="#">About</a></li>
+ <li><a href="#">Article</a></li>
+ <li><a href="#">Contact</a></li>
+ </ul>
+</nav>
+<aside id="side">
+ <h1>news</h1>
+ <a href="#"><p>creating html website</p></a>
+ <a href="#"><p>learn css</p></a>
+ <a href="#">learn c#</a>
+</aside>
+
+
+ <div id="con">
+ <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+ </asp:ContentPlaceHolder>
+ </div>
+
+
+<footer id="footer">
+ copyright @Abhay More
+</footer>
+</body>
+</html>
+
+
+WebForm2.aspx:
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs"
+Inherits="Practical5b.WebForm2" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+Develop project by your own
+</asp:Content>
+
+
+StyleSheet1.css:
+#header {
+ color: #247BA0;
+ text-align: center;
+ font-size: 20px;
+}
+#nav {
+ background-color: #FF1654;
+ padding: 5px;
+}
+ul {
+ list-style-type: none;
+}
+li a {
+ color: #F1FAEE;
+ font-size: 30px;
+ column-width: 5%;
+}
+li {
+ display: inline;
+ padding-left: 2px;
+ column-width: 20px;
+}
+a {
+ text-decoration: none;
+ margin-left: 20px
+}
+li a:hover {
+ background-color: #F3FFBD;
+ color: #FF1654;
+ padding: 1%;
+}
+#side {
+text-align: center;
+ float: right;
+ width: 15%;
+ padding-bottom: 79%;
+ background-color: #F1FAEE;
+}
+#article {
+ background-color: #EEF5DB;
+ padding: 10px;
+ padding-bottom: 75%;
+}
+#footer {
+ background-color: #C7EFCF;
+ text-align: center;
+ padding-bottom: 5%;
+ font-size: 20px;
+}
+#con {
+ border: double;
+ border-color: burlywood;
+}
+text-align: center;
+ float: right;
+ width: 15%;
+ padding-bottom: 79%;
+ background-color: #F1FAEE;
+}
+#article {
+ background-color: #EEF5DB;
+ padding: 10px;
+ padding-bottom: 75%;
+}
+#footer {
+ background-color: #C7EFCF;
+ text-align: center;
+ padding-bottom: 5%;
+ font-size: 20px;
+}
+#con {
+ border: double;
+ border-color: burlywood;
+}
